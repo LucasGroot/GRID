@@ -17,6 +17,8 @@ conda activate RecSys
 
 cd $HOME/GRID
 
+export OMP_NUM_THREADS=8
+
 BASE=/projects/prjs2120/groups/group_08
 
 python -m src.inference experiment=rkmeans_inference_flat \
