@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=tiger_train_beauty
+#SBATCH --job-name=tiger_train_sports
 #SBATCH --partition=gpu_a100
 #SBATCH --gpus=1
 #SBATCH --time=6:00:00
@@ -22,7 +22,7 @@ cd $HOME/GRID
 BASE=/projects/prjs2120/groups/group_08
 
 python -m src.train experiment=tiger_train_flat \
-    data_dir=$BASE/data/amazon_data/beauty \
-    semantic_id_path=$BASE/results/sid/beauty/rkmeans_inference/pickle/merged_predictions_tensor.pt \
+    data_dir=$BASE/data/amazon_data/sports \
+    semantic_id_path=$BASE/results/sid_rkmeans/sports/rkmeans_inference/pickle/merged_predictions_tensor.pt \
     num_hierarchies=4 \
-    hydra.run.dir=$BASE/results/tiger/beauty
+    hydra.run.dir=$BASE/results/tiger/sports_rkmeans

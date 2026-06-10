@@ -2,7 +2,7 @@
 #SBATCH --job-name=train_sids_beauty
 #SBATCH --partition=gpu_a100
 #SBATCH --gpus=1
-#SBATCH --time=4:00:00
+#SBATCH --time=1:00:00
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --output=logs/%x-%j.out
@@ -23,9 +23,9 @@ BASE=/projects/prjs2120/groups/group_08
 
 python -m src.train experiment=rkmeans_train_flat \
     data_dir=$BASE/data/amazon_data/beauty \
-    embedding_path=$BASE/results/embeddings/beauty_v2/merged_predictions_tensor.pt \
+    embedding_path=$BASE/results/embeddings/beauty_v2/pickle/merged_predictions_tensor.pt \
     embedding_dim=2048 \
     num_hierarchies=3 \
     codebook_width=256 \
-    hydra.run.dir=$BASE/results/sid/beauty/rkmeans_train
+    hydra.run.dir=$BASE/results/sid_rkmeans/beauty/rkmeans_train
 
