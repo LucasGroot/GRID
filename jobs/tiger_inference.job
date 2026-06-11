@@ -20,10 +20,14 @@ export OMP_NUM_THREADS=8
 cd $HOME/GRID
 
 BASE=/projects/prjs2120/groups/group_08
+  
 
 python -m src.inference experiment=tiger_inference_flat \
-    data_dir=$BASE/data/amazon_data/beauty \
-    semantic_id_path=$BASE/results/sid/beauty/rkmeans_inference/pickle/merged_predictions_tensor.pt \
-    ckpt_path=$BASE/results/tiger/beauty/*/checkpoints/*.ckpt \
+    data_dir=$BASE/data/amazon_data/beauty \ 
+    semantic_id_path=$BASE/results/sid/beauty_v2/rkmeans_inference/pickle/merged_predictions_tensor.pt \
+    ckpt_path=$BASE/results/tiger/beauty_rkmeans/checkpoints/checkpoint_epoch=000_step=004500.ckpt \ # this can be found in the log dir for training GR models
     num_hierarchies=4 \
-    hydra.run.dir=$BASE/results/tiger/beauty/inference
+    hydra.run.dir=$BASE/results/tiger/beauty_rkmeans/inference \
+
+
+
