@@ -1,0 +1,34 @@
+#!/bin/bash
+#SBATCH --job-name=data_processing_sasrec
+#SBATCH --output=logs/data_processing_sasrec_%j.out
+#SBATCH --error=logs/data_processing_sasrec_%j.err
+#SBATCH --partition=gpu_h100
+#SBATCH --gpus=1
+#SBATCH --time=00:15:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+
+module purge
+module load 2023
+module load Anaconda3/2023.07-2
+module load CUDA/12.4.0
+
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate grid
+
+DATASET=$1
+
+cd $HOME/GRID/SASRec.pytorch
+
+BASE=/projects/prjs2120/groups/group_08
+
+echo "========================================="
+echo "Starting SASRec data processing"
+echo "Dataset: ${DATASET}"
+echo "Input path: ${BASE}/data/amazon_data/${DATASET}"
+echo "========================================="
+
+python python/data/DataProcessing.py \
+  --dataset_path ${BASE}/data/amazon_data/${DATASET} \
+  --dataset_name $DATASET
