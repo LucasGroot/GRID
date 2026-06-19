@@ -32,10 +32,10 @@ for filepath in files:
 
 # Write output in SASRec format: one line per user
 # "user_id item1 item2 item3 ..."
-output_file = f'python/data/reviews_{args.dataset_name}.txt'
-with open(output_file, 'w') as f:
-    for user_id, items in sorted(user_sequences.items()):
-        for item_id in items:
-            f.write(f"{user_id} {item_id + 1}\n")  # +1 for 1-indexing
+# output_file = f'python/data/reviews_{args.dataset_name}.txt'
+# with open(output_file, 'w') as f:
+#     for user_id, items in sorted(user_sequences.items()):
+#         for item_id in items:
+#             f.write(f"{user_id} {item_id + 1}\n")  # +1 for 1-indexing
 
-print(f"Written {len(user_sequences)} users to {output_file}")
+# print(f"Written {len(user_sequences)} users to {output_file}")
