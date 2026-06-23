@@ -85,6 +85,8 @@ if __name__ == '__main__':
     
     if args.inference_only:
         model.eval()
+        topk = evaluate_with_topk(model, dataset, args, k=10)
+        recommendation_entropy(topk, itemnum)
         t_test = evaluate(model, dataset, args)
         print('test (NDCG@10: %.4f, HR@10: %.4f)' % (t_test[0], t_test[1]))
     

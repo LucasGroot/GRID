@@ -238,3 +238,62 @@ def evaluate_valid(model, dataset, args):
         NDCG5 / valid_user,
         NDCG10 / valid_user,
     )
+
+def evaluate_with_topk(model, dataset, args, k=10):
+    [train, valid, test, usernum, itemnum] = copy.deepcopy(dataset)
+    
+    if usernum > 10000:
+        users = random.sample(range(1, usernum + 1), 10000)
+    else:
+        users = range(1, usernum + 1)
+
+    all_topk = {}  # user_id -> list of top-k item ids
+
+    for u in users:
+        if len(train[u]) < 1 or len(test[u]) < 1:
+            continue
+
+        seq = np.zeros([args.maxlen], dtype=np.int32)
+        idx = args.maxlen - 1
+        seq[idx] = valid[u][0]
+        idx -= 1
+        for i in reversed(train[u]):
+            seq[idx] = i
+            idx -= 1
+            if idx == -1:
+                break
+
+        # exclude already seen items
+        rated = set(train[u])
+        rated.add(0)
+        rated.add(valid[u][0])
+        candidates = [i for i in range(1, itemnum + 1) if i not in rated]
+
+        predictions = -model.predict(*[np.array(l) for l in [[u], [seq], candidates]])
+        predictions = predictions[0]
+
+        # get top-k indices into candidates list
+        topk_indices = predictions.argsort()[:k].tolist()
+        topk_items = [candidates[i] for i in topk_indices]
+        all_topk[u] = topk_items
+
+    return all_topk
+
+
+def recommendation_entropy(topk_dict, itemnum):
+    from collections import Counter
+    import numpy as np
+
+    counter = Counter()
+    for items in topk_dict.values():
+        counter.update(items)
+
+    counts = np.array(list(counter.values()), dtype=float)
+    probs = counts / counts.sum()
+    entropy = -np.sum(probs * np.log2(probs + 1e-10))
+    max_entropy = np.log2(itemnum)
+    print(f"Recommendation entropy: {entropy:.4f}")
+    print(f"Max possible entropy:   {max_entropy:.4f}")
+    print(f"Normalized entropy:     {entropy/max_entropy:.4f}")
+    print(f"Unique items recommended: {len(counter)} / {itemnum}")
+    return entropy

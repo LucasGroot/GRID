@@ -1,0 +1,6 @@
+itemnum: 12101
+Dataset: beauty
+Recommendation entropy: 10.9169
+Max possible entropy:   13.5628
+Normalized entropy:     0.8049
+Unique items recommended: 6194 / 12101
