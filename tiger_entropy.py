@@ -5,6 +5,7 @@ import sys
 import os
 
 dataset = sys.argv[1]
+model = sys.argv[2]
 
 os.chdir(f'{os.environ["HOME"]}/GRID/SASRec.pytorch/python')
 
@@ -14,9 +15,15 @@ data = data_partition(f'reviews_{dataset}')
 itemnum = data[4]
 print(f"itemnum: {itemnum}")
 
-pkl_path = f'{os.environ["HOME"]}/GRID/tiger_inference/{dataset}/outputs/pickle/merged_predictions.pkl'
+pkl_path = f'{os.environ["HOME"]}/GRID/{model}/{dataset}/outputs/pickle/merged_predictions.pkl'
 with open(pkl_path, 'rb') as f:
     predictions = pickle.load(f)
+
+print(f"pkl length: {len(predictions)}")
+print(f"first entry keys: {predictions[0].keys()}")
+print(f"first entry: {predictions[0]}")
+print(f"num semantic_ids per user: {len(predictions[0]['semantic_ids'])}")
+print(f"sid length: {len(predictions[0]['semantic_ids'][0])}")
 
 counter = Counter()
 for entry in predictions:
@@ -28,7 +35,10 @@ probs = counts / counts.sum()
 entropy = -np.sum(probs * np.log2(probs + 1e-10))
 max_entropy = np.log2(itemnum)
 
+print("============================")
 print(f"Dataset: {dataset}")
+print(f"Model: {model}")
+print("============================")
 print(f"Recommendation entropy: {entropy:.4f}")
 print(f"Max possible entropy:   {max_entropy:.4f}")
 print(f"Normalized entropy:     {entropy/max_entropy:.4f}")

@@ -24,12 +24,20 @@ cd $HOME/GRID
 
 BASE=/projects/prjs2120/groups/group_08
 
+CKPT=$(ls $BASE/results/tiger/${DATASET}_rkmeans/checkpoints/checkpoint_epoch=*.ckpt | head -1)
+
+if [ -z "$CKPT" ]; then
+    echo "ERROR: no checkpoint found for $DATASET"
+    exit 1
+fi
+
+mkdir -p $HOME/GRID/grid_encoder_decoder/${DATASET}/outputs
 
 python -m src.inference experiment=tiger_inference_flat \
     data_dir=$BASE/data/amazon_data/$DATASET \
     semantic_id_path=$BASE/results/sid_rkmeans/${DATASET}/rkmeans_inference/pickle/merged_predictions_tensor.pt \
-    ckpt_path="'$BASE/results/tiger/beauty_rkmeans/checkpoints/checkpoint_epoch=000_step=004500.ckpt'" \
+    ckpt_path="'$CKPT'" \
     num_hierarchies=4 \
-    hydra.run.dir=$HOME/GRID/tiger_inference/$DATASET \
-    paths.output_dir=$HOME/GRID/tiger_inference/${DATASET}/outputs \
+    hydra.run.dir=$HOME/GRID/grid_encoder_decoder/$DATASET \
+    paths.output_dir=$HOME/GRID/grid_encoder_decoder/${DATASET}/outputs \
     ++should_skip_retry=True

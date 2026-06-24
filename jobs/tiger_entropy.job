@@ -3,7 +3,7 @@
 #SBATCH --output=logs/entropy_tiger_%j.out
 #SBATCH --error=logs/entropy_tiger_%j.err
 #SBATCH --partition=rome
-#SBATCH --time=0:01:00
+#SBATCH --time=0:15:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -16,12 +16,20 @@ module load CUDA/12.4.0
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate grid
 
-DATASET=$1
-
 export OMP_NUM_THREADS=8
+
+# Datasets include: beauty, toys, sports
+
+# Models include: grid_decoder_only_all_noaug, grid_decoder_only_last, grid_encoder_decoder
 
 cd $HOME/GRID
 
-source activate grid
+DATASETS=(beauty toys sports)
+MODELS=(grid_decoder_only_all_noaug grid_decoder_only_last grid_encoder_decoder)
 
-python tiger_entropy.py $DATASET
+for DATASET in "${DATASETS[@]}"; do
+    for MODEL in "${MODELS[@]}"; do
+        echo "Running entropy for $DATASET / $MODEL"
+        python tiger_entropy.py $DATASET $MODEL
+    done
+done

@@ -1,0 +1,135 @@
+Running entropy for beauty / grid_decoder_only_all_noaug
+itemnum: 12101
+pkl length: 22363
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 15744, 'semantic_ids': [[93, 131, 172, 1], [93, 27, 29, 0], [93, 131, 172, 2], [235, 156, 166, 0], [235, 205, 76, 1], [235, 156, 76, 2], [93, 131, 33, 0], [93, 27, 255, 0], [93, 239, 156, 1], [93, 239, 156, 2]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: beauty
+Model: grid_decoder_only_all_noaug
+============================
+Recommendation entropy: 10.2492
+Max possible entropy:   13.5628
+Normalized entropy:     0.7557
+Unique items recommended: 5084 / 12101
+Running entropy for beauty / grid_decoder_only_last
+itemnum: 12101
+pkl length: 22363
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 15744, 'semantic_ids': [[71, 26, 169, 0], [71, 26, 46, 0], [116, 26, 135, 0], [246, 136, 139, 3], [246, 136, 139, 2], [116, 248, 27, 0], [246, 136, 219, 0], [116, 248, 13, 0], [93, 131, 172, 1], [93, 131, 172, 2]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: beauty
+Model: grid_decoder_only_last
+============================
+Recommendation entropy: 10.2538
+Max possible entropy:   13.5628
+Normalized entropy:     0.7560
+Unique items recommended: 4444 / 12101
+Running entropy for beauty / grid_encoder_decoder
+itemnum: 12101
+pkl length: 22363
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 15744, 'semantic_ids': [[137, 165, 92, 0], [169, 165, 92, 1], [122, 173, 235, 0], [239, 47, 133, 0], [86, 173, 13, 0], [169, 165, 92, 2], [86, 165, 191, 0], [224, 173, 59, 0], [86, 173, 46, 2], [210, 65, 33, 3]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: beauty
+Model: grid_encoder_decoder
+============================
+Recommendation entropy: 10.9169
+Max possible entropy:   13.5628
+Normalized entropy:     0.8049
+Unique items recommended: 6194 / 12101
+Running entropy for toys / grid_decoder_only_all_noaug
+itemnum: 11924
+pkl length: 19412
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 16512, 'semantic_ids': [[126, 36, 171, 1], [126, 36, 171, 4], [126, 36, 171, 3], [26, 233, 54, 2], [126, 84, 246, 2], [126, 36, 171, 5], [175, 177, 246, 1], [126, 36, 171, 2], [126, 84, 246, 3], [126, 84, 246, 7]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: toys
+Model: grid_decoder_only_all_noaug
+============================
+Recommendation entropy: 11.3143
+Max possible entropy:   13.5416
+Normalized entropy:     0.8355
+Unique items recommended: 7367 / 11924
+Running entropy for toys / grid_decoder_only_last
+itemnum: 11924
+pkl length: 19412
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 16512, 'semantic_ids': [[126, 36, 171, 1], [126, 36, 171, 4], [126, 36, 171, 3], [126, 153, 246, 0], [126, 217, 169, 1], [175, 177, 246, 1], [126, 36, 171, 5], [126, 36, 171, 2], [126, 21, 180, 0], [126, 36, 141, 0]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: toys
+Model: grid_decoder_only_last
+============================
+Recommendation entropy: 11.4098
+Max possible entropy:   13.5416
+Normalized entropy:     0.8426
+Unique items recommended: 7240 / 11924
+Running entropy for toys / grid_encoder_decoder
+itemnum: 11924
+pkl length: 19412
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 16512, 'semantic_ids': [[126, 153, 246, 0], [126, 217, 169, 2], [126, 36, 171, 3], [233, 34, 214, 2], [126, 84, 246, 3], [233, 34, 214, 1], [126, 36, 171, 1], [98, 230, 23, 2], [126, 84, 246, 7], [126, 217, 169, 1]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: toys
+Model: grid_encoder_decoder
+============================
+Recommendation entropy: 11.0020
+Max possible entropy:   13.5416
+Normalized entropy:     0.8125
+Unique items recommended: 5704 / 11924
+Running entropy for sports / grid_decoder_only_all_noaug
+itemnum: 18357
+pkl length: 35598
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 3328, 'semantic_ids': [[193, 181, 94, 0], [105, 242, 75, 2], [249, 128, 199, 7], [253, 162, 227, 2], [118, 91, 192, 0], [253, 74, 35, 0], [117, 211, 232, 2], [249, 128, 199, 5], [117, 211, 232, 1], [249, 128, 199, 9]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: sports
+Model: grid_decoder_only_all_noaug
+============================
+Recommendation entropy: 9.2233
+Max possible entropy:   14.1640
+Normalized entropy:     0.6512
+Unique items recommended: 2970 / 18357
+Running entropy for sports / grid_decoder_only_last
+itemnum: 18357
+pkl length: 35598
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 3328, 'semantic_ids': [[105, 242, 75, 2], [118, 91, 192, 0], [193, 181, 94, 0], [92, 50, 75, 1], [40, 28, 200, 0], [114, 187, 207, 0], [40, 108, 64, 1], [249, 128, 199, 7], [103, 186, 191, 1], [103, 186, 191, 2]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: sports
+Model: grid_decoder_only_last
+============================
+Recommendation entropy: 10.1198
+Max possible entropy:   14.1640
+Normalized entropy:     0.7145
+Unique items recommended: 5451 / 18357
+Running entropy for sports / grid_encoder_decoder
+itemnum: 18357
+pkl length: 35598
+first entry keys: dict_keys(['user_id', 'semantic_ids'])
+first entry: {'user_id': 3328, 'semantic_ids': [[208, 246, 225, 1], [193, 181, 94, 0], [105, 242, 75, 2], [96, 161, 35, 1], [117, 185, 232, 0], [103, 205, 64, 1], [103, 219, 147, 0], [249, 128, 199, 7], [117, 4, 200, 0], [117, 185, 251, 3]]}
+num semantic_ids per user: 10
+sid length: 4
+============================
+Dataset: sports
+Model: grid_encoder_decoder
+============================
+Recommendation entropy: 9.5893
+Max possible entropy:   14.1640
+Normalized entropy:     0.6770
+Unique items recommended: 3544 / 18357
