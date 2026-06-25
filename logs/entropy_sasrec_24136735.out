@@ -1,0 +1,12 @@
+=========================================
+Calculating SASRec entropy from trained model
+Dataset: toys
+File name: reviews_toys.txt
+=========================================
+average sequence length: 19.61
+Recommendation entropy: 11.5602
+Max possible entropy:   13.5416
+Normalized entropy:     0.8537
+Unique items recommended: 8049 / 11924
+....................................................................................................test (NDCG@10: 0.0330, HR@10: 0.0517)
+Done

@@ -1,0 +1,7 @@
+=========================================
+Starting SASRec data processing
+Dataset: beauty
+Input path: /projects/prjs2120/groups/group_08/data/amazon_data/beauty
+=========================================
+Found 525 files
+Written 22363 users to python/data/reviews_beauty.txt

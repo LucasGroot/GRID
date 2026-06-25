@@ -1,0 +1,7 @@
+=========================================
+Starting SASRec data processing
+Dataset: toys
+Input path: /projects/prjs2120/groups/group_08/data/amazon_data/toys
+=========================================
+Found 456 files
+Written 19412 users to python/data/reviews_toys.txt
