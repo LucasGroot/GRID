@@ -130,18 +130,69 @@ If you use GRID in your research, please cite:
 }
 ```
 
-## 🤝 Acknowledgments
+## Reproduction study
 
-- Built with [PyTorch](https://pytorch.org/) and [PyTorch Lightning](https://lightning.ai/)
-- Configuration management by [Hydra](https://hydra.cc/)
-- Inspired by recent advances in generative AI and recommendation systems
-- Part of this repo is built on top of https://github.com/ashleve/lightning-hydra-template
+This part is an extension of the README for our reproduction study. It is divided up in parts.
 
-## 📞 Contact
+### 1. SASRec Baseline (Data Preprocessing)
 
-For questions and support:
-- Create an issue on GitHub
-- Contact the development team: Clark Mingxuan Ju (mju@snap.com), Liam Collins (lcollins2@snap.com), Bhuvesh Kumar (bhuvesh@snap.com) and Leonardo Neves (lneves@snap.com).
+To transform the data into .txt files used by SASRec, we utilize a slightly adapted version of the DataProcessing.py file in the SASRec repo. Makes sure BASE points to the location of the amazon data (obtained from GRID). DATASET includes: beauty, sports, toys. We ran it from the SASRec.pytorch folder, but this can be changed easily in the file.
+
+```bash
+python python/data/DataProcessing.py \
+  --dataset_path ${BASE}/data/amazon_data/${DATASET} \
+  --dataset_name $DATASET
+```
+### 2. SASRec Baseline (Train Model)
+
+Using the created .txt dataset files, we can train the model. Code was created by the original authors to be run from the SASRec.pytorch/python folder, but can again be changed in the code easily. We run for 200 epochs. arguments, logs and checkpoints are saved automatically.
+
+```bash
+python main.py --dataset=reviews_${DATASET} --train_dir=default --num_epochs=200
+```
+
+### 3. SASRec Entropy and coverage calculation
+
+We use the checkpoints obtained from the previous step to calculate global entropy and coverage. These are automatically calculated and printed in inference mode.
+
+```bash
+python main.py \
+    --dataset=reviews_${DATASET} \
+    --train_dir=default \
+    --inference_only=true \
+    --state_dict_path=reviews_${DATASET}_default/SASRec.epoch=200.lr=0.001.layer=2.head=1.hidden=50.maxlen=200.pth
+```
+
+### 4. Tiger Inference
+
+To obtain entropy and coverage results from the reproduced TIGER and added decoder-only models, we again use 2 steps: First run inference on the test set and then use a separate script to compute metrics. Datasets again include the Amazon datasets: toys, sports and beauty. Include the checkpoint path and the path to the semantic ids of the test set.
+
+```bash
+python -m src.inference experiment=tiger_inference_flat \
+    data_dir=$BASE/data/amazon_data/$DATASET \
+    semantic_id_path=$BASE/results/sid_rkmeans/${DATASET}/rkmeans_inference/pickle/merged_predictions_tensor.pt \
+    ckpt_path="'$CKPT'" \
+    num_hierarchies=4 \
+    hydra.run.dir=$HOME/GRID/grid_encoder_decoder/$DATASET \
+    paths.output_dir=$HOME/GRID/grid_encoder_decoder/${DATASET}/outputs \
+    ++should_skip_retry=True
+```
+
+### 5. TIGER and decoder-only Entropy and coverage calculation
+
+We use two loops to very quickly print all the metrics for the several datasets and models, rename to your own model folder names.
+
+```bash
+DATASETS=(beauty toys sports)
+MODELS=(grid_decoder_only_all_noaug grid_decoder_only_last grid_encoder_decoder)
+
+for DATASET in "${DATASETS[@]}"; do
+    for MODEL in "${MODELS[@]}"; do
+        echo "Running entropy for $DATASET / $MODEL"
+        python tiger_entropy.py $DATASET $MODEL
+    done
+done
+```
 
 ## Bibliography 
 
