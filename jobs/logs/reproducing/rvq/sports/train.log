@@ -1,0 +1,30 @@
+[2026-06-11 20:25:56,711][src.utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2026-06-11 20:25:56,717][src.utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+[2026-06-11 20:25:56,996][src.utils.restart_job][INFO] - [rank: 0] Using metadata dir: /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata
+[2026-06-11 20:25:56,996][src.utils.restart_job][INFO] - [rank: 0] Starting job (attempt 1/4): /home/scur1224/.conda/envs/RecSys/bin/python /gpfs/home1/scur1224/GRID/src/train.py experiment=tiger_train_flat data_dir=/projects/prjs2120/groups/group_08/data/amazon_data/sports semantic_id_path=/projects/prjs2120/groups/group_08/results/sid_rvq/sports/rvq_inference/pickle/merged_predictions_tensor.pt num_hierarchies=4 hydra.run.dir=/projects/prjs2120/groups/group_08/results/tiger_rvq/sports ++should_skip_retry=True
+[2026-06-11 20:26:05,128][src.utils.utils][INFO] - [rank: 0] Enforcing tags! <cfg.extras.enforce_tags=True>
+[2026-06-11 20:26:05,133][src.utils.utils][INFO] - [rank: 0] Printing config tree with Rich! <cfg.extras.print_config=True>
+[2026-06-11 20:26:05,406][src.utils.restart_job][INFO] - [rank: 0] should_skip_retry set to True. Skipping retry logic.
+[2026-06-11 20:26:05,415][src.utils.launcher_utils][INFO] - [rank: 0] Instantiating datamodule <src.data.loading.datamodules.sequence_datamodule.SequenceDataModule>
+[2026-06-11 20:26:05,589][src.utils.launcher_utils][INFO] - [rank: 0] Instantiating model <src.models.modules.semantic_id.tiger_generation_model.SemanticIDEncoderDecoder>
+[2026-06-11 20:26:05,807][src.utils.launcher_utils][INFO] - [rank: 0] Instantiating callbacks...
+[2026-06-11 20:26:05,808][src.utils.instantiators][INFO] - [rank: 0] Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2026-06-11 20:26:05,811][src.utils.instantiators][INFO] - [rank: 0] Instantiating callback <lightning.pytorch.callbacks.EarlyStopping>
+[2026-06-11 20:26:05,814][src.utils.instantiators][INFO] - [rank: 0] Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2026-06-11 20:26:05,814][src.utils.instantiators][INFO] - [rank: 0] Instantiating callback <src.utils.restart_job.RestartAndLoadCheckpointCallback>
+[2026-06-11 20:26:05,817][src.utils.restart_job_utils][INFO] - [rank: 0] Trying to load metadata from /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json
+[2026-06-11 20:26:05,817][src.utils.restart_job_utils][WARNING] - [rank: 0] Metadata file not found at /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json. Creating empty metadata.
+[2026-06-11 20:26:05,817][src.utils.restart_job_utils][INFO] - [rank: 0] Saving metadata to /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json. {'start_time': '2026-06-11T20:26:05.817690', 'restarts': [], 'current_run': 0, 'used_ports': [], 'world_size': 0, 'node_rank': 0, 'master_addr': '', 'original_args': ['/gpfs/home1/scur1224/GRID/src/train.py', 'experiment=tiger_train_flat', 'data_dir=/projects/prjs2120/groups/group_08/data/amazon_data/sports', 'semantic_id_path=/projects/prjs2120/groups/group_08/results/sid_rvq/sports/rvq_inference/pickle/merged_predictions_tensor.pt', 'num_hierarchies=4', 'hydra.run.dir=/projects/prjs2120/groups/group_08/results/tiger_rvq/sports', '++should_skip_retry=True']}
+[2026-06-11 20:26:05,818][src.utils.launcher_utils][INFO] - [rank: 0] Instantiating loggers...
+[2026-06-11 20:26:05,818][src.utils.instantiators][INFO] - [rank: 0] Instantiating logger <lightning.pytorch.loggers.csv_logs.CSVLogger>
+[2026-06-11 20:26:05,820][src.utils.launcher_utils][INFO] - [rank: 0] Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2026-06-11 20:26:05,822][src.utils.restart_job_utils][INFO] - [rank: 0] Trying to load metadata from /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json
+[2026-06-11 20:26:05,824][src.utils.restart_job_utils][INFO] - [rank: 0] Metadata loaded successfully from /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json
+[2026-06-11 20:26:05,824][src.utils.restart_job_utils][INFO] - [rank: 0] Retrieved current_run: 0 from metadata /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json
+[2026-06-11 20:26:05,869][src.utils.launcher_utils][INFO] - [rank: 0] Logging hyperparameters!
+[2026-06-11 20:26:06,280][__main__][INFO] - [rank: 0] Starting training!
+[2026-06-11 20:26:08,355][src.utils.restart_job_utils][INFO] - [rank: 0] Saving metadata to /projects/prjs2120/groups/group_08/results/tiger_rvq/sports/metadata/restart_metadata.json. {'start_time': '2026-06-11T20:26:05.817690', 'restarts': [], 'current_run': 0, 'used_ports': ['43371'], 'world_size': 1, 'node_rank': 0, 'master_addr': '127.0.0.1', 'original_args': ['/gpfs/home1/scur1224/GRID/src/train.py', 'experiment=tiger_train_flat', 'data_dir=/projects/prjs2120/groups/group_08/data/amazon_data/sports', 'semantic_id_path=/projects/prjs2120/groups/group_08/results/sid_rvq/sports/rvq_inference/pickle/merged_predictions_tensor.pt', 'num_hierarchies=4', 'hydra.run.dir=/projects/prjs2120/groups/group_08/results/tiger_rvq/sports', '++should_skip_retry=True']}
+[2026-06-12 03:13:57,769][__main__][INFO] - [rank: 0] Starting testing!
+[2026-06-12 03:17:16,417][__main__][INFO] - [rank: 0] Best ckpt path: /gpfs/work5/0/prjs2120/groups/group_08/results/tiger_rvq/sports/checkpoints/checkpoint_epoch=000_step=005300.ckpt
+[2026-06-12 03:17:16,451][__main__][INFO] - [rank: 0] Metrics: {'train/loss': tensor(8.8813), 'train/loss_step': tensor(8.0473), 'val/loss': tensor(9.1311), 'val/ndcg@5': tensor(0.0194), 'val/ndcg@10': tensor(0.0240), 'val/recall@5': tensor(0.0296), 'val/recall@10': tensor(0.0440), 'train/loss_epoch': tensor(8.8813), 'test/loss': tensor(9.4544), 'test/ndcg@5': tensor(0.0153), 'test/ndcg@10': tensor(0.0191), 'test/recall@5': tensor(0.0238), 'test/recall@10': tensor(0.0357)}
+[2026-06-12 03:17:20,260][src.utils.restart_job][INFO] - [rank: 0] Job finished successfully.
