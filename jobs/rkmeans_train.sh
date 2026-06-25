@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=train_sids
-#SBATCH --partition=gpu_a100
+#SBATCH --partition=gpu_h100
 #SBATCH --gpus=1
 #SBATCH --time=1:00:00
 #SBATCH --cpus-per-task=8
@@ -33,14 +33,20 @@ conda activate RecSys
 
 cd $HOME/GRID
 export OMP_NUM_THREADS=8
-BASE=/projects/prjs2120/groups/group_08
+BASE_PROJECT=/projects/prjs2120/groups/group_08
+BASE_SCRATCH=/scratch-shared/$USER
 
-mkdir -p $BASE/results/sid_rkmeans/${MODEL_SIZE}/${DATASET}/rkmeans_train/metadata
+# Point directly to your scratch embeddings
+EMBED_PATH=$BASE_SCRATCH/embeddings/${MODEL_SIZE}/${DATASET}/pickle/merged_predictions_tensor.pt
 
+# Ensure the log/metadata structure exists in the project folder (lightweight text files)
+mkdir -p $BASE_PROJECT/results/sid_rkmeans/${MODEL_SIZE}/${DATASET}/rkmeans_train/metadata
+
+# Force the heavy checkpoint outputs into your scratch playground
 python -m src.train experiment=rkmeans_train_flat \
-    data_dir=$BASE/data/amazon_data/$DATASET \
-    embedding_path=$BASE/results/embeddings/${MODEL_SIZE}/${DATASET}/pickle/merged_predictions_tensor.pt \
+    data_dir=$BASE_PROJECT/data/amazon_data/$DATASET \
+    embedding_path=$EMBED_PATH \
     embedding_dim=$DIM \
     num_hierarchies=3 \
     codebook_width=256 \
-    hydra.run.dir=$BASE/results/sid_rkmeans/${MODEL_SIZE}/${DATASET}/rkmeans_train
+    hydra.run.dir=$BASE_SCRATCH/results/sid_rkmeans/${MODEL_SIZE}/${DATASET}/rkmeans_train
