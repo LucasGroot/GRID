@@ -1,0 +1,12 @@
+=========================================
+Calculating SASRec entropy from trained model
+Dataset: beauty
+File name: reviews_beauty.txt
+=========================================
+average sequence length: 20.23
+Recommendation entropy: 11.2414
+Max possible entropy:   13.5628
+Normalized entropy:     0.8288
+Unique items recommended: 7631 / 12101
+....................................................................................................test (NDCG@10: 0.0334, HR@10: 0.0501)
+Done

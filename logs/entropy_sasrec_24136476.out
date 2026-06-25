@@ -1,0 +1,12 @@
+=========================================
+Calculating SASRec entropy from trained model
+Dataset: sports
+File name: reviews_sports.txt
+=========================================
+average sequence length: 19.28
+Recommendation entropy: 11.7418
+Max possible entropy:   14.1640
+Normalized entropy:     0.8290
+Unique items recommended: 9932 / 18357
+....................................................................................................test (NDCG@10: 0.0114, HR@10: 0.0233)
+Done
