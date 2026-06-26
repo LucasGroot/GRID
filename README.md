@@ -2,19 +2,16 @@
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0%2B-red)](https://pytorch.org/)
 [![Hydra](https://img.shields.io/badge/config-hydra-89b8cd)](https://hydra.cc/)
 [![Lightning](https://img.shields.io/badge/pytorch-lightning-792ee5)](https://lightning.ai/)
-[![arXiv](https://img.shields.io/badge/arXiv-2507.22224-b31b1b.svg)](https://arxiv.org/abs/2507.22224)
 
 
-**GRID** (Generative Recommendation with Semantic IDs) is a state-of-the-art framework for generative recommendation systems using semantic IDs, developed by a group of scientists and engineers from [Snap Research](https://research.snap.com/team/user-modeling-and-personalization.html). This project implements novel approaches for learning semantic IDs from text embedding and generating recommendations through transformer-based generative models.
+This repository reproduces and extends the **GRID** (Generative Recommendation with Semantic IDs) framework by [Ju et al. (2025)](https://arxiv.org/abs/2507.22224)[5], as part of a research reproduction study conducted at the University of Amsterdam. The original GRID framework provides both a practitioner's handbook and a unified codebase for generative recommendation with semantic IDs. Our work verifies the reproducibility of their reported results and contributes several extensions on top of their existing implementation.
 
-## 🚀 Overview
+## 🔍 What We Did
+Building on GRID's three-step pipeline (embedding generation, semantic ID learning, and generative retrieval), we reproduce the original results across three Amazon review datasets (Beauty, Toys, Sports) and contribute the following extensions:
 
-GRID facilitates generative recommendation three overarching steps:
-
-- **Embedding Generation with LLMs**: Converting item text into embeddings using any LLMs available on Huggingface. 
-- **Semantic ID Learning**: Converting item embedding into hierarchical semantic IDs using Residual Quantization techniques such as RQ-KMeans, RQ-VAE, RVQ. 
-- **Generative Recommendations**: Using transformer architectures to generate recommendation sequences as semantic ID tokens. 
-
+- **Decoder-only architecture:** A GPT-style decoder-only transformer that was described but not implemented in the original paper, which we find outperforms the original encoder-decoder setup when using a loss-last training objective.
+- **Loss strategy comparison:** An evaluation of loss-last vs. loss-all training objectives for the decoder-only model.
+- **Diversity analysis:** An entropy-based diversity comparison between GRID and a SASRec baseline, revealing that SID-based generative retrieval trades catalogue coverage for relevance.
 
 ## 📦 Installation
 
@@ -243,3 +240,5 @@ done
 [3] Lee, Doyup, et al. "Autoregressive image generation using residual quantization." Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 2022.
 
 [4] Geng, Shijie, et al. "Recommendation as language processing (rlp): A unified pretrain, personalized prompt & predict paradigm (p5)." Proceedings of the 16th ACM conference on recommender systems. 2022.
+
+[5] Ju, Clark Mingxuan, et al. "Generative Recommendation with Semantic IDs: A Practitioner's Handbook." Proceedings of the 34th ACM International Conference on Information and Knowledge Management. 2025.
